@@ -1,3 +1,3 @@
 # try-jsonpath
 
-Testing json path.
+Testing json path, reference docs: <https://github.com/dchester/jsonpath>.
