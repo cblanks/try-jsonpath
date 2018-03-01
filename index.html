@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>JSON Path</title>
+    </head>
+    <body>
+        <h1>Result</h1>
+        <p id="result">?</p>
+        <button onclick="searchJson()">Search</button>
+        
+        <script src="node_modules/jquery/dist/jquery.min.js"></script>
+        <script src="node_modules/jsonpath/jsonpath.min.js"></script>
+        <script>
+        
+let data = {
+    books: [
+        { author: 'moi', title: 'fish and cheese', year: 1998 },
+        { author: 'moi', title: 'fish and chops', year: 1980 },
+        { author: 'moi', title: 'fresh', year: 2013 },
+        { author: 'you', title: 'cheese and chips', year: 2005 },
+        { author: 'you', title: 'dave', year: 2015 }
+    ]
+};
+
+function searchJson() {
+    var names = jsonpath.query(data, '$..books[?(@.year>2012)]');
+    $('#result').html(JSON.stringify(names));
+}
+
+        </script>
+    </body>
+</html>

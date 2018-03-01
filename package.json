@@ -1,0 +1,19 @@
+{
+  "name": "try-jsonpath",
+  "version": "1.0.0",
+  "repository": "https://github.com/cblanks/try-jsonpath.git",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "lite-server -p 3000"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "jsonpath": "^1.0.0"
+  },
+  "devDependencies": {
+    "lite-server": "^2.3.0"
+  }
+}
