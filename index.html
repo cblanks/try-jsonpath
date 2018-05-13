@@ -3,15 +3,17 @@
         <title>JSON Path</title>
     </head>
     <body>
-        <h1>Result</h1>
-        <p id="result">?</p>
+        <h1>Query</h1>
+        <p id="query">?</p>
+        <h3>Result</h3>
+        <pre id="result">?</pre>
         <button onclick="searchJson()">Search</button>
         
         <script src="node_modules/jquery/dist/jquery.min.js"></script>
         <script src="node_modules/jsonpath/jsonpath.min.js"></script>
         <script>
         
-let data = {
+var data = {
     books: [
         { author: 'moi', title: 'fish and cheese', year: 1998 },
         { author: 'moi', title: 'fish and chops', year: 1980 },
@@ -21,9 +23,27 @@ let data = {
     ]
 };
 
+var queries = [
+    '$..author',
+    '$..books[?(@.title.indexOf("cheese") > -1)].title',
+    '$..books[?(@.title === "fresh" || @.year === 1998)].title',
+    '$..books[?(@.year > 2012)]'
+];
+
+function randomPositiveInteger(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+}
+
+function randomQuery() {
+    return queries[randomPositiveInteger(queries.length)];
+}
+
 function searchJson() {
-    var names = jsonpath.query(data, '$..books[?(@.year>2012)]');
-    $('#result').html(JSON.stringify(names));
+    var query = randomQuery(),
+        names = jsonpath.query(data, query);
+
+    $('#query').html(query);
+    $('#result').html(JSON.stringify(names, null, 2));
 }
 
         </script>
